@@ -1,0 +1,45 @@
+﻿@model DNAFormModel
+
+@{
+	ViewData["Title"] = "DNA Reader";
+}
+<h2 class="text-center">@ViewData["Title"]</h2>
+<hr />
+
+@if (Model.CompressedCodonSequence.Length != 0 && Model.AminoAcidsSynthesized.Length != 0)
+{
+    <div class="text-center">
+        <font size="5">
+            <p>Amino Acids Synthesized: </p>
+        </font>
+        @Model.AminoAcidsSynthesized
+    </div>
+    <div class="text-center">
+        <font size="5">
+            <p>Compressed Codon Sequence: </p>
+        </font>
+       @Model.CompressedCodonSequence
+    </div>
+
+}
+else
+{
+  <div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="DNASequence">Enter DNA Sequence below</label>
+                <input asp-for="DNASequence" class="form-control" placeholder="Input...">
+                <span asp-validation-for="DNASequence" class="small text-danger"></span>
+            </div>
+            <div class="text-center">
+                <input class="btn btn-primary" type="submit" value="Submit" />
+            </div>
+        </form>
+    </div>
+</div>
+}
+
+
+
+
